@@ -87,9 +87,7 @@ export default function Dashboard() {
             hasMore={hasMore}
             loader={<div>Loading</div>}
           >
-            {posts.map((post, i) => (
-              <Post post={post} key={i} />
-            ))}
+
           </InfiniteScroll>
         </>
       )}
