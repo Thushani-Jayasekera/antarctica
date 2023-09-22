@@ -5,7 +5,9 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json* ./
-RUN npm ci
+RUN npm cache clean --force && \
+    npm install -g npm@latest && \
+    npm install
 
 COPY . .
 
@@ -24,9 +26,9 @@ ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 
 USER 10014
-EXPOSE 3000
+EXPOSE 7040
 
 ENV HOSTNAME 0.0.0.0
-ENV PORT 3000
+ENV PORT 7040
 
 CMD ["./node_modules/.bin/next", "start"]
